@@ -4,3 +4,4 @@ poetry.lock
 openapi.json
 .env
 .vscode
+.DS_Store

@@ -1,6 +1,10 @@
 # Dialogue with your Documents for Data-Driven Decision Making
 
-When I started developing this application, my goal was to build an interactive and intelligent document reader. I wanted users to upload a document, ask a question about it, and have an AI generate responses based on the document’s content. So, here’s how I put everything together:
+When I started developing this application, my goal was to build an interactive and intelligent document reader.
+
+- https://www.josoroma.com/dialogue-with-your-documents-for-data-driven-decision-making
+
+I wanted users to upload a document, ask a question about it, and have an AI generate responses based on the document’s content. So, here’s how I put everything together:
 
 ![Data Driven-Decision Making Diagram](./data-driving-decission-making.jpeg)
 
