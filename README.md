@@ -51,7 +51,7 @@ If the “Enable file upload” checkbox is ticked, a file uploader widget appea
 
 If a user chooses to upload a document, the application reads the uploaded PDF, divides it into individual pages using the PyPDFLoader, and creates a searchable vectorstore index using Pinecone.
 
-## Transform Chunks Text to Vector Embeddings
+## Transform Chunks of Text to Vector Embeddings
 
 The embedding before going to the vectorstore essentially converts the text into a mathematical representation that can be efficiently searched and compared, providing the backbone for our question-answering system.
 
