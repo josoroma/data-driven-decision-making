@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "Ask me anything about the uploaded PDF document"
+version = "0.1.0"
+description = "Dialogue with your Documents for Data-Driven Decision Making"
+authors = ["Josoroma <pablo@josoroma.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.23.1"
+streamlit-chat = "^0.0.2.2"
+streamlit-extras = "^0.2.7"
+langchain = "^0.0.202"
+openai = "^0.27.8"
+tiktoken = "^0.4.0"
+pypdf = "^3.9.1"
+pinecone-client = "^2.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

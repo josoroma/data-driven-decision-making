@@ -1,0 +1,6 @@
+.coverage
+poetry.lock
+*.pyc
+openapi.json
+.env
+.vscode
