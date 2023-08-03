@@ -7,13 +7,13 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-streamlit = "^1.23.1"
-streamlit-chat = "^0.0.2.2"
-streamlit-extras = "^0.2.7"
-langchain = "^0.0.202"
+streamlit = "^1.25.0"
+streamlit-chat = "^0.1.1"
+streamlit-extras = "^0.3.0"
+langchain = "^0.0.250"
 openai = "^0.27.8"
 tiktoken = "^0.4.0"
-pypdf = "^3.9.1"
+pypdf = "^3.14.0"
 pinecone-client = "^2.2.2"
 
 [build-system]

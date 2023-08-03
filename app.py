@@ -1,20 +1,19 @@
 import os
-import time
 import tempfile
 import streamlit as st
 from streamlit_chat import message
-from streamlit_extras.colored_header import colored_header
 from streamlit_extras.add_vertical_space import add_vertical_space
 import pinecone
-from langchain.llms.openai import OpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.vectorstores.pinecone import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
 from langchain.document_loaders import PyPDFLoader
 
 # Initializing the models and configurations
-MODEL="gpt-3.5-turbo"
-OPEN_API_TEMPERATURE = 0
+LLM_MODEL="gpt-4"
+LLM_TEMPERATURE=0
+EMBEDDING_MODEL="text-embedding-ada-002"
 CHAIN_TYPE="stuff"
 DOCUMENT_TYPE="pdf"
 
@@ -64,23 +63,25 @@ def process_pdf(file):
 def initialize_retriever(pages=None):
     # Initialize the vector retriever
     try:
-        embeddings = OpenAIEmbeddings(openai_api_key=OPEN_API_KEY, model=MODEL)
+        # model: str = "text-embedding-ada-002", chunk_size: int = 1000
+        embeddings = OpenAIEmbeddings(openai_api_key=OPEN_API_KEY, model=EMBEDDING_MODEL)
         pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_ENV)
         if pages:
             vectordb = Pinecone.from_documents(pages, embeddings, index_name=PINECONE_INDEX)
         else:
             vectordb = Pinecone.from_existing_index(PINECONE_INDEX, embeddings)
-        return vectordb.as_retriever()
+        return vectordb.as_retriever(), embeddings
     except Exception as e:
         raise Exception(f"Failed to initialize retriever: {e}")
 
 def generate_response(user_prompt_input, pages=None):
     # Generate a response for the user's prompt
     try:
-        retriever = initialize_retriever(pages)
-        llm = OpenAI(temperature=OPEN_API_TEMPERATURE, openai_api_key=OPEN_API_KEY)
+        retriever, embeddings = initialize_retriever(pages)
+        llm = ChatOpenAI(model_name=LLM_MODEL, temperature=LLM_TEMPERATURE, openai_api_key=OPEN_API_KEY)
         qa = RetrievalQA.from_chain_type(llm, chain_type=CHAIN_TYPE, retriever=retriever)
-        return qa.run(user_prompt_input)
+        response = qa.run(user_prompt_input)
+        return response
     except Exception as e:
         raise Exception(f"Failed to generate response: {e}")
 
@@ -110,7 +111,8 @@ def main():
         st.markdown('''
         ## Specs
         - OpenAI LLM
-        - GPT Model
+        - GPT 4 Model
+        - Text Embedding Ada 002
         - PyPDFLoader Document Loader
         - Pinecone Vector Store
         - RetrievalQA Chain / Stuff Chain

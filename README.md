@@ -6,7 +6,7 @@ When I started developing this application, my goal was to build an interactive 
 
 I wanted users to upload a document, ask a question about it, and have an AI generate responses based on the document’s content. So, here’s how I put everything together:
 
-![Data Driven-Decision Making Diagram](./data-driving-decission-making.jpeg)
+![Data Driven-Decision Making Diagram](./data-driving-decision-making.jpeg)
 
 ## Setup Environment, Add Packages and Run App
 
@@ -57,7 +57,7 @@ The embedding before going to the vectorstore essentially converts the text into
 
 ## Ask anything about the document
 
-![.env file](./app-chat.png)
+![.env file](./app-chat.jpeg)
 
 Now that the vectorstore index is ready, the user can input a question or prompt related to the uploaded document. When the user submits a question, the application triggers the generate_response() function. This function utilizes OpenAI’s GPT model to generate an answer based on the vector representation of the document in the vectorstore.
 
