@@ -57,7 +57,7 @@ The embedding before going to the vectorstore essentially converts the text into
 
 ## Ask anything about the document
 
-![.env file](./app-chat.jpeg)
+![.env file](./chat-app.png)
 
 Now that the vectorstore index is ready, the user can input a question or prompt related to the uploaded document. When the user submits a question, the application triggers the generate_response() function. This function utilizes OpenAI’s GPT model to generate an answer based on the vector representation of the document in the vectorstore.
 
